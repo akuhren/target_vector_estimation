@@ -45,7 +45,7 @@ model_wrapped = GPyModelWrapper(model)
 target = ...
 acq = L2_LCB(model=model_wrapped, target=target)
 
-# Create and run the Bayesian optimization loop
+# Create and run the Bayesian optimization loop for 10 iterations
 bayesopt_loop = BayesianOptimizationLoop(
     model=model_wrapped, space=parameter_space, acquisition=acq)
 bayesopt_loop.run_loop(f, 10)
