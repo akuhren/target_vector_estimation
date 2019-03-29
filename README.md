@@ -10,11 +10,15 @@ TODO
 
 ## Overview
 
-The Python module in this repository acts as an extension to the [Emukit](https://github.com/amzn/emukit) Bayesian optimization package. It is aimed at the problem of estimating a target vector through a stochastic and blackboxed multi-output function, i.e. finding the inputs to the function which produces a pre-specified target vector.
+The Python module in this repository is an extension to the [Emukit](https://github.com/amzn/emukit) Bayesian optimization library. It is aimed at the task of estimating a target vector through a stochastic and blackboxed multi-output function, i.e. finding the inputs to the function which produces a pre-specified target vector.
+
+![](https://raw.githubusercontent.com/akuhren/target_vector_estimation/master/imgs/opt_example.gif)
 
 ### Installation
 
-TODO
+To install the module and all dependencies, use pip as follows:
+
+`pip install git+https://github.com/akuhren/target_vector_estimation`
 
 ### Usage
 
@@ -51,13 +55,11 @@ bayesopt_loop.run_loop(f, 10)
 
 Bayesian optimization is an established and theoretically well-founded approach to optimizing functions that are non-differentiable, stochastic, and expensive to evaluate. By fitting a probabilistic model to noisy observations of the unknown function, the predictive distribution over unseen outputs can be used for optimally selecting where to sample next.
 
-A slight variation of this problem is that of approximating a target vector by querying a multi-output function. Say that we wish to produce an implant for a patient and that this implant, once inserted, should produce certain measurements of blood-flow etc. [Perdikaris et al., 2016]. Here the function inputs are the implant specifications, the function outputs are the observed measurements, and the target vector is the optimal measurements as defined by experts.
+A slight variation of this problem is that of approximating a target vector by querying a multi-output function. Say that we wish to manufacture an implant for a patient and that this implant, once inserted, should produce certain measurements of the blood flow through said implant [Perdikaris et al., 2016]. Here the function inputs are the implant design, the function outputs are the observed blood flow measurements, and the target vector is optimal the blood flow measurements, as defined by medical experts.
 
-One approach in approximating the target vector through Bayesian optimization is to minimize the sum of squares between observed output and target by use of a standard surrogate model such as a Gaussian process. This is the approach taken in [Perdikaris et al., 2016]. However, this implies two major caveats: 1) The individual outputs of the unknown function are never observed directly, and 2) we model the distance between two vectors with a Gaussian predictive distribution. The latter point is critical since the distribution over a distance is non-negative and asymmetrical, both of which qualities are not elicited by the normal predictive.
+One approach in approximating the target vector through Bayesian optimization is to minimize the sum of squares between observed output and target using a standard surrogate model such as a Gaussian process. This is the approach taken in [Perdikaris et al., 2016]. However, this implies two major caveats: 1) The individual outputs of the unknown function are never observed directly, and 2) we model the distance between two vectors with a Gaussian predictive distribution. The latter point is critical since the distribution over a distance is non-negative and asymmetrical, both of which qualities are not elicited by the normal predictive.
 
-In the proposed approach we instead model each output dimension of the unknown function with a Gaussian process and infer a noncentral chi-squared distribution over the distance to the target. The optimization rely on established acquisition functions (Expected Improvement and Lower Confidence Bound) that have been revised for the new predictive distribution. This allows for a more precise noise model and a more informed method for choosing new sampling points, yielding a demonstrably better optimization procedure.
-
-![](https://raw.githubusercontent.com/akuhren/target_vector_estimation/master/imgs/opt_example.gif)
+In the proposed approach we instead model each output dimension of the unknown function with a Gaussian process and infer a noncentral chi-squared distribution over the distance to the target. The optimization rely on established acquisition functions (either Expected Improvement or Lower Confidence Bound) that have been revised for the new predictive distribution. This allows for a more precise noise model and a more informed method for choosing new sampling points, yielding a demonstrably better optimization procedure.
 
 ## References
 
