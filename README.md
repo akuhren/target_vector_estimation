@@ -57,7 +57,7 @@ One approach in approximating the target vector through Bayesian optimization is
 
 In the proposed approach we instead model each output dimension of the unknown function with a Gaussian process and infer a noncentral chi-squared distribution over the distance to the target. The optimization rely on established acquisition functions (Expected Improvement and Lower Confidence Bound) that have been revised for the new predictive distribution. This allows for a more precise noise model and a more informed method for choosing new sampling points, yielding a demonstrably better optimization procedure.
 
-![](https://github.com/akuhren/target_vector_estimation/imgs/opt_example.gif)
+![](https://raw.githubusercontent.com/akuhren/target_vector_estimation/master/imgs/opt_example.gif)
 
 ## References
 
