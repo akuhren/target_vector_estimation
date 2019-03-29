@@ -17,6 +17,7 @@ except ImportError:
 from emukit.core.interfaces import IModel, IDifferentiable
 from emukit.core.acquisition import Acquisition
 
+
 class L2ExpectedImprovement(Acquisition):
 
     def __init__(self, model: Union[IModel, IDifferentiable], target: np.array) -> None:
@@ -46,8 +47,8 @@ class L2ExpectedImprovement(Acquisition):
 
         m = 1 - r1*r3/(3*r2**2)
         z = (t/(k_ + nc))**m
-        alpha = 1 + m*(m - 1)*(r2/(2*r1**2) - \
-                    (2 - m)*(1 - 3*m)*r2**2/(8*r1**4))
+        alpha = 1 + m*(m - 1) * (r2/(2*r1**2) -
+                (2 - m)*(1 - 3*m)*r2**2/(8*r1**4))
         rho = m*np.sqrt(r2)/r1 * (1 - (1 - m)*(1 - 3*m)/(4*r1**2)*r2)
 
         norm_cdf = 0.5*(1 + erf((z - alpha)/(rho*np.sqrt(2))))
@@ -109,7 +110,7 @@ class L2ExpectedImprovement(Acquisition):
             dvariance_dx = np.atleast_3d(dvariance_dx)
             dvariance_dx = np.repeat(dvariance_dx, k, axis=2)
 
-        # Values and derivatives for Expected Improvement w.r.t. mean and 
+        # Values and derivatives for Expected Improvement w.r.t. mean and
         # variances
         ei = self._l2_ei((means, variances), y_min)
         dei_dmean, dei_dvariance = self.grad_fun((means, variances), y_min)

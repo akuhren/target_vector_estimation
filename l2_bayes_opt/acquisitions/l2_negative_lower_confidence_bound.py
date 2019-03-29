@@ -23,7 +23,7 @@ class L2NegativeLowerConfidenceBound(Acquisition):
         Negative Lower Confidence Bound acquisition function for target vector
         estimation. For more information see:
         Efficient Bayesian Optimization for Target Vector Estimation
-        Uhrenholt, Anders K. and Jensen, Bjørn S.
+        Uhrenholt, Anders K. and Jensen, Bjorn S.
         2019, AISTATS
 
         :param model: model that is used to compute the improvement.
