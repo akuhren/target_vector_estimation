@@ -2,11 +2,7 @@
 
 This repository accompanies the following paper:
 
-Uhrenholt, A. and Jensen, B. S. "Efficient Bayesian Optimization for Target Vector Estimation". 22nd International Conference on Artificial Intelligence and Statistics (AISTATS 2019).
-
-For use in publications, please cite:
-
-TODO
+Uhrenholt, A. and Jensen, B. S. "Efficient Bayesian Optimization for Target Vector Estimation". AISTATS 2019-22nd International Conference on Artificial Intelligence and Statistics. 2019.
 
 ## Overview
 
@@ -55,7 +51,7 @@ bayesopt_loop.run_loop(f, 10)
 
 Bayesian optimization is an established and theoretically well-founded approach to optimizing functions that are non-differentiable, stochastic, and expensive to evaluate. By fitting a probabilistic model to noisy observations of the unknown function, the predictive distribution over unseen outputs can be used for optimally selecting where to sample next.
 
-A slight variation of this problem is that of approximating a target vector by querying a multi-output function. Say that we wish to manufacture an implant for a patient and that this implant, once inserted, should produce certain measurements of the blood flow through said implant [Perdikaris et al., 2016]. Here the function inputs are the implant design, the function outputs are the observed blood flow measurements, and the target vector is optimal the blood flow measurements, as defined by medical experts.
+A slight variation of this problem is that of approximating a target vector by querying a multi-output function. Say we wish to manufacture an implant for a patient and that this implant, once inserted, should produce certain blood flow measurements [Perdikaris et al., 2016]. Here the function inputs are the implant design, the function outputs are the observed blood flow measurements, and the target vector is optimal the blood flow measurements, as defined by medical experts.
 
 One approach in approximating the target vector through Bayesian optimization is to minimize the sum of squares between observed output and target using a standard surrogate model such as a Gaussian process. This is the approach taken in [Perdikaris et al., 2016]. However, this implies two major caveats: 1) The individual outputs of the unknown function are never observed directly, and 2) we model the distance between two vectors with a Gaussian predictive distribution. The latter point is critical since the distribution over a distance is non-negative and asymmetrical, both of which qualities are not elicited by the normal predictive.
 
