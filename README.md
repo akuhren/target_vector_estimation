@@ -1,6 +1,6 @@
 # Efficient Bayesian Optimization for Target Vector Estimation
 
-This repository accompanies the following paper:
+This repository accompanies the following [paper](http://proceedings.mlr.press/v89/uhrenholt19a/uhrenholt19a.pdf):
 
 Uhrenholt, A. and Jensen, B. S. "Efficient Bayesian Optimization for Target Vector Estimation". AISTATS 2019-22nd International Conference on Artificial Intelligence and Statistics. 2019.
 
